@@ -18,7 +18,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     super.initState();
     safeRebuild(() async {
       final controller = ref.read(splashControllerProvider.notifier);
-      controller.startTime().whenComplete(() => context.goNamed(AppRoute.home));
+      controller
+          .startTime()
+          .whenComplete(() => context.goNamed(AppRoute.login));
     });
   }
 
