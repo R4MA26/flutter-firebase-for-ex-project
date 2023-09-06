@@ -9,7 +9,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(loginControllerProvider.notifier);
-
+    final user = controller.getCurrentUser;
     return Scaffold(
       body: Center(
         child: Column(
@@ -17,11 +17,10 @@ class HomeScreen extends ConsumerWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(100),
-              child:
-                  Image.network(controller.getCurrentUser!.photoURL.toString()),
+              child: Image.network(user!.photoURL.toString()),
             ),
-            Text('${controller.getCurrentUser?.displayName}'),
-            Text('${controller.getCurrentUser?.email}'),
+            Text('${user.displayName}'),
+            Text('${user.email}'),
             CardButtonWidget(
               title: 'Logout',
               onTap: () {
