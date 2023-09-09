@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learn_firebase/src/common_widgets/card_button_widget.dart';
-import 'package:learn_firebase/src/features/auth/presentation/login_controller.dart';
+import 'package:learn_firebase/src/features/auth/provider/login_controller_provider.dart';
+// import 'package:learn_firebase/src/features/auth/presentation/login_controller.dart';
 import 'package:learn_firebase/src/features/home/home_controller.dart';
 
 class HomeScreen extends ConsumerWidget {

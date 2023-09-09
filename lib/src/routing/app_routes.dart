@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:learn_firebase/src/features/home/home_screen.dart';
 import 'package:learn_firebase/src/features/splash_screen/splash_screen.dart';
 import 'package:learn_firebase/src/routing/auth_routes.dart';
+import 'package:learn_firebase/src/routing/home_routes.dart';
 
 class AppRoute {
   static String home = 'home';
@@ -31,17 +31,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: '/',
         name: AppRoute.splash,
         builder: (context, state) => const SplashScreen(),
-        routes: [
-          authRoutes,
-          homeRoutes,
-        ],
       ),
+      authRoutes,
+      homeRoutes,
     ],
   );
 });
-
-final homeRoutes = GoRoute(
-  path: 'home',
-  name: AppRoute.home,
-  builder: (context, state) => const HomeScreen(),
-);

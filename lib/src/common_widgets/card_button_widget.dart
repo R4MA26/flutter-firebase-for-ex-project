@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class CardButtonWidget extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
+  final bool isLoading;
 
   const CardButtonWidget({
     super.key,
     required this.title,
     required this.onTap,
+    this.isLoading = false,
   });
 
   @override
@@ -24,13 +26,15 @@ class CardButtonWidget extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: isLoading
+              ? const CircularProgressIndicator()
+              : Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     );
