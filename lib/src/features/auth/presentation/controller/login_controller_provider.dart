@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learn_firebase/src/features/auth/data/auth_repository.dart';
@@ -32,7 +34,9 @@ class LoginController extends _$LoginController {
         success: (data) {
           context.goNamed(AppRoute.home);
         },
-        failure: (error, stackTrace) {},
+        failure: (error, stackTrace) {
+          log('$error and $stackTrace');
+        },
       );
     }
   }
@@ -48,7 +52,9 @@ class LoginController extends _$LoginController {
         success: (data) {
           context.goNamed(AppRoute.login);
         },
-        failure: (error, stackTrace) {},
+        failure: (error, stackTrace) {
+          log('$error and $stackTrace');
+        },
       );
     }
   }
