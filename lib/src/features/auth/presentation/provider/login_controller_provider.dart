@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:learn_firebase/src/features/auth/data/auth_repository.dart';
+import 'package:learn_firebase/src/routing/app_routes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:learn_firebase/src/features/auth/service/auth_service.dart';
-import 'package:learn_firebase/src/routing/app_routes.dart';
+import 'package:learn_firebase/src/features/auth/application/auth_service.dart';
 
 part 'login_controller_provider.g.dart';
 
@@ -11,12 +12,14 @@ part 'login_controller_provider.g.dart';
 class LoginController extends _$LoginController {
   @override
   Future<AuthService> build() async {
-    return AuthService();
+    return AuthService(ref.read(authRepositoryProvider));
   }
 
   void signInWithGoogle(BuildContext context) async {
     state = const AsyncLoading();
+
     AuthService? authService = state.valueOrNull;
+
     if (authService != null) {
       final res = await authService.signInWithGoogle();
 
