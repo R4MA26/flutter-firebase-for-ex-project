@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learn_firebase/src/common_widgets/card_button_widget.dart';
-import 'package:learn_firebase/src/features/auth/presentation/provider/login_controller_provider.dart';
+import 'package:learn_firebase/src/features/auth/presentation/controller/login_controller_provider.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
