@@ -8,7 +8,7 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(loginControllerProvider.notifier);
+    final controller = ref.watch(loginControllerProvider.notifier);
     final state = ref.watch(loginControllerProvider);
 
     return Scaffold(

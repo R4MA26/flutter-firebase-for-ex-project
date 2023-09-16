@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:learn_firebase/src/features/auth/data/auth_repository.dart';
 import 'package:learn_firebase/src/services/config/result.dart';
 
@@ -16,11 +15,3 @@ class AuthService {
     return _authRepository.signOut();
   }
 }
-
-final authServiceProvider = Provider<AuthService>((ref) {
-  final authRepository = ref.read(authRepositoryProvider);
-
-  return AuthService(
-    authRepository,
-  );
-});
