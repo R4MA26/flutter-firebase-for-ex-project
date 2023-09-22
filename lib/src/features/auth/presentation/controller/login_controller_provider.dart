@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:learn_firebase/src/routing/app_routes.dart';
@@ -19,8 +21,18 @@ class LoginController extends _$LoginController {
 
     state = const AsyncLoading();
 
-    state = await AsyncValue.guard(authService.signInWithGoogle)
-        .whenComplete(() => context.goNamed(AppRoute.home));
+    final res = await authService.signInWithGoogle();
+
+    res.when(
+      success: (data) {
+        context.goNamed(AppRoute.home);
+      },
+      failure: (error, stackTrace) {
+        log('$error$stackTrace');
+      },
+    );
+
+    // state = await AsyncValue.guard(authService.signInWithGoogle);
   }
 
   void signOut(BuildContext context) async {
@@ -28,44 +40,16 @@ class LoginController extends _$LoginController {
 
     state = const AsyncLoading();
 
-    state = await AsyncValue.guard(authService.signOut)
-        .whenComplete(() => context.goNamed(AppRoute.login));
+    final res = await authService.signOut();
+
+    res.when(
+      success: (data) {
+        context.goNamed(AppRoute.login);
+      },
+      failure: (error, stackTrace) {},
+    );
+
+    // state = await AsyncValue.guard(authService.signOut)
+    //     .whenComplete(() => context.goNamed(AppRoute.login));
   }
-
-  // void signInWithGoogle(BuildContext context) async {
-  //   state = const AsyncLoading();
-
-  //   AuthService? authService = state.valueOrNull;
-
-  //   if (authService != null) {
-  //     final res = await authService.signInWithGoogle();
-
-  //     res.when(
-  //       success: (data) {
-  //         context.goNamed(AppRoute.home);
-  //       },
-  //       failure: (error, stackTrace) {
-  //         log('$error and $stackTrace');
-  //       },
-  //     );
-  //   }
-  // }
-
-  // void signOut(BuildContext context) async {
-  //   state = const AsyncLoading();
-
-  //   AuthService? authService = state.valueOrNull;
-  //   if (authService != null) {
-  //     final res = await authService.signOut();
-
-  //     res.when(
-  //       success: (data) {
-  //         context.goNamed(AppRoute.login);
-  //       },
-  //       failure: (error, stackTrace) {
-  //         log('$error and $stackTrace');
-  //       },
-  //     );
-  //   }
-  // }
 }

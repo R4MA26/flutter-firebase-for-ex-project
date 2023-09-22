@@ -5,21 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "learn_firebase",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "learn_firebase (profile mode)",
+            "name": "learn_firebase PROD",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "args": [
+                "--flavor",
+                "prod"
+            ]
         },
         {
-            "name": "learn_firebase (release mode)",
+            "name": "learn_firebase DEV",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "args": [
+                "--flavor",
+                "dev"
+            ]
         }
     ]
 }

@@ -58,6 +58,23 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "learnfirebase"
+    productFlavors {
+            dev {
+                dimension "learnfirebase"
+                // applicationIdSuffix ".dev"
+                resValue "string", "app_name", "Learn Firebase App Dev"
+                versionNameSuffix ".dev"
+            }
+            prod {
+                dimension "learnfirebase"
+                // applicationIdSuffix ".prod"
+                resValue "string", "app_name", "Learn Firebase App Prod"
+                versionNameSuffix ".prod"
+            }
+        }
+
 }
 
 flutter {
